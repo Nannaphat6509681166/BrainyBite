@@ -128,7 +128,9 @@ body {
     align-items: center; /* Ensure vertical centering of the button and circle */
   }
 
-  .auth-box button {
+  .auth-box a {
+    color: black;
+    text-decoration: none;
     margin-right: 1.5vw;
     font-size: 16px;
     font-family: 'Kanit', sans-serif;
@@ -165,7 +167,7 @@ body {
     border-radius: 50%; /* ทำให้เป็นวงกลม */
   }
 
-  
+
 
   .hidden {
     display: none;
