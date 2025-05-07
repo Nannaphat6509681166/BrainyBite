@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<h2>Welcome!</h2>
+<div id="userinfo"></div>
+<a href="/logout"><button>Logout</button></a>
+
+<script>
+    fetch('/me')
+        .then(response => {
+            if (!response.ok) throw new Error('Not authenticated');
+            return response.json();
+        })
+        .then(data => {
+            const userDiv = document.getElementById("userinfo");
+            userDiv.innerHTML = `
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Username:</strong> ${data['cognito:username']}</p>
+            `;
+        })
+        .catch(err => {
+            document.getElementById("userinfo").innerText = "You are not logged in.";
+        });
+</script>
+</body>
+</html>

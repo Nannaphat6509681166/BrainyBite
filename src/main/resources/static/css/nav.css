@@ -1,0 +1,375 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    max-width: 100vw;
+    height: 9vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    background-color: #D9D9D9;
+    z-index: 999;
+  }
+
+  .menu {
+    display: flex;
+    width: 35vw;
+    justify-content: flex-start;
+    font-size: 16px;
+  }
+
+  .menu .logo{
+    margin: 0 1.5vw;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+  }
+
+  .menu a {
+    color: black;
+    text-decoration: none;
+    padding: 14px 16px;
+    transition: all 0.3s ease;
+  }
+
+  .menu a.home-btn {
+    color: black;
+    text-decoration: none;
+    padding: 14px 16px;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 14px;
+  }
+
+  .menu a.home-btn:hover {
+    border-bottom: 3px solid #333;
+  }
+
+  .dropdown-category {
+    float: left;
+    overflow: hidden;
+  }
+
+  .dropdown-category .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    font-family: 'Kanit', sans-serif;
+    padding: 14px 16px;
+    background-color: inherit;
+  }
+
+  .dropdown-category-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  .dropdown-category-content a {
+    float: none;
+    color: black;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-category-content a:hover {
+    background-color: #ddd;
+    border-bottom: none;
+  }
+
+
+  .dropdown-category:hover .dropdown-category-content {
+    display: block;
+  }
+
+  .search-box {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between; /* Space between input and button */
+    align-items: center; /* Center elements vertically */
+  }
+
+  .search-box input {
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    border: none;
+    border-radius: 30px;
+    padding: 1vh 1vw;
+    width: 150vw;
+  }
+
+  .search-button {
+    font-family: 'Kanit', sans-serif;
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .auth-box {
+    width: 35vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Ensure vertical centering of the button and circle */
+  }
+
+  .auth-box button {
+    margin-right: 1.5vw;
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    border: none;
+    background-color: inherit;
+    padding: 14px 16px;
+    padding-bottom: 14px;
+  }
+
+  #nav-signup-signin-btn {
+    display: flex;
+    border: none;
+    outline: none;
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    gap: 10px; /* ระยะห่างระหว่างวงกลมและข้อความ */
+    padding-left: 10px; /* ระยะห่างด้านซ้ายเพิ่มเติม */
+    cursor: pointer;
+    background: inherit;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+  }
+
+  #nav-signup-signin-btn:hover {
+    border-bottom: 3px solid #333;
+
+  }
+
+  #nav-signup-signin-btn::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+  }
+
+  
+
+  .hidden {
+    display: none;
+  }
+
+  .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Modal Styling */
+  .modal {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+  }
+
+  /* Header of Modal */
+  .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .modal-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+  }
+
+  #auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* Adds space between elements */
+  }
+
+  /* Label Styling */
+  #auth-form label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+  }
+
+  /* Input Field Styling */
+  #auth-form input {
+      padding: 14px 20px;
+      width: 290px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #f9f9f9;
+      color: #333;
+      margin-bottom: 15px; /* Space between input fields */
+  }
+
+  /* Focused Input Styling */
+  #auth-form input:focus {
+      border-color: #4CAF50;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Green glow on focus */
+  }
+
+  /* Submit Button Styling */
+  #auth-form button {
+      padding: 14px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Button Hover Effect */
+  #auth-form button:hover {
+      background-color: #45a049;
+      transform: translateY(-2px); /* Slight lift effect */
+  }
+
+  /* Switch Mode Button */
+  #switch-auth-mode {
+      margin-top: 10px;
+      background-color: transparent;
+      color: black;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+  }
+
+  #switch-auth-mode:hover {
+      color: #333;
+  }
+
+  /* Modern Shadow Effects for Modal */
+  .modal {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Softer and larger shadow */
+      border-radius: 16px; /* More rounded edges */
+  }
+
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+      .modal {
+          width: 90%;
+          padding: 20px;
+      }
+
+      #auth-form {
+          gap: 15px; /* Slightly smaller gap on smaller screens */
+      }
+
+      #auth-form input,
+      #auth-form button {
+          font-size: 14px;
+      }
+  }
+
+  #close-overlay {
+      position: absolute; /* Position inside the modal */
+      top: 10px; /* Space from the top */
+      right: 23px; /* Space from the right */
+      background-color: transparent;
+      border: none;
+      font-size: 30px; /* Adjust size as needed */
+      color: #333; /* Dark color for visibility */
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  #close-overlay:hover {
+      color: #e74c3c; /* Red color on hover for emphasis */
+      transform: scale(1.1); /* Slight zoom effect on hover */
+  }
+
+  #close-overlay:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.8); /* Focus ring for accessibility */
+  }
+
+.modal {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Softer and larger shadow */
+    border-radius: 16px; /* More rounded edges */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .modal {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #auth-form {
+        gap: 15px;
+    }
+
+    #auth-form input,
+    #auth-form button {
+        font-size: 14px;
+    }
+}
+
+  .dropdown {
+    margin-top: 16px;
+    font-size: 16px;
+    position: absolute;
+    float: none;
+    top: 50px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown a:hover {
+    background-color: #ddd;
+    border-bottom: none;
+  }
