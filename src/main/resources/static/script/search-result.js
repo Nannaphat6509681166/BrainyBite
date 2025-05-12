@@ -30,10 +30,15 @@ async function displayArticles(articles) {
     const articlesContainer = document.getElementById("allArticles");
     articlesContainer.innerHTML = ''; // Clear previous
 
-    if (articles.length === 0) {
-        searchResultsDiv.textContent = 'No articles found.';
+    if (!articles || articles.length === 0) {
+        articlesContainer.innerHTML = `
+            <p style="font-size: 1.2em; color: #666; text-align: center; margin-top: 20px;">
+                No articles found. Try a different keyword.
+            </p>
+        `;
         return;
     }
+
 
     const loggedIn = isUserLoggedIn();
     const userId = localStorage.getItem("id");

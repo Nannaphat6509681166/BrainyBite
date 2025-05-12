@@ -12,6 +12,31 @@ body {
 }
 
 
+.header {
+  margin-top: 9vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.header a {
+  font-family: 'Kanit', sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+.header::after {
+    content: '';                /* Creates the line */
+    display: flex;             /* Make it behave like a block element */
+    width: 80%;                /* Make the line take up the full width */
+    height: 4px;                /* Line thickness */
+    background-color: black;     /* Line color */
+     margin: 5px auto 0;           /* Adds space between text and the line */
+}
 
 .information {
   margin-top: 9vh;
@@ -111,52 +136,4 @@ body {
   color: #555;
   text-align: left;
 }
-
-/*#searchResults {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 50px;
-    margin-top: 100px;
-    margin-left: 100px;
-}
-
-#searchResults > div {
-    width: 30%;                      
-      box-sizing: border-box;          
-      background-color: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      padding: 10px;
-}
-
-#searchResults > div img {
-   width: 100%;                     
-     height: 200px;                  
-     object-fit: cover;              
-     border-radius: 5px;              
-     display: block;    
-     background-color: #f0f0f0;
-}
-
-
-#searchResults > div h2{
-    font-size: 18px;
-    margin: 10px 0;
-    text-align: left;
-}
-
-#searchResults > div p{
-    font-size: 14px;
-    color: #555;
-    text-align: left;
-}
-
-
-#searchResults > div {
-    cursor: pointer;
-}*/
-
 

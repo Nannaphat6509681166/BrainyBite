@@ -36,7 +36,7 @@ function displayArticles(articles) {
     articlesContainer.innerHTML = ''; // Clear previous content
 
     if (!articles || articles.length === 0) {
-        articlesContainer.innerHTML = '<p>No articles found for this category.</p>';
+        articlesContainer.innerHTML = '<p style="font-size: 1.2em;"> No articles found for this category.</p>';
         return;
     }
 
