@@ -34,46 +34,17 @@
         <button type="submit" class="search-button">ค้นหา</button>
     </form>
     <div class="auth-box">
-        <button id="nav-signup-signin-btn">เข้าสู่ระบบ
+        <a id="nav-signup-signin-btn" href="/oauth2/authorization/cognito">เข้าสู่ระบบ
             <i class="fa fa-caret-down"></i>
-        </button>
+        </a>
         <div id="dropdown-menu" class="dropdown hidden">
             <a href="user.html" id="profile-link">ข้อมูลส่วนตัว</a>
             <a href="admin.html" id="admin-lnink">เพิ่มบทความ</a>
             <a href="#" id="logout-link">ออกจากระบบ</a>
         </div>
     </div>
+    <div></div>
 </nav>
-<div id="overlay" class="hidden"> <!-- ซ่อน overlay เริ่มต้น -->
-    <div class="modal">
-        <div class="modal-header">
-            <h2 id="modal-title">เข้าสู่ระบบ</h2>
-            <button id="close-overlay">&times;</button>
-        </div>
-        <form id="auth-form">
-            <div id="auth-fields">
-                <!-- ฟิลด์สำหรับการเข้าสู่ระบบ -->
-                <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
-                <input
-                        type="email"
-                        id="email"
-                        placeholder="อีเมล"
-                        class="hidden"
-                >
-                <input type="password" id="password" placeholder="รหัสผ่าน" required>
-                <!-- ฟิลด์เพิ่มเติมสำหรับการลงทะเบียน -->
-                <input
-                        type="password"
-                        id="confirm-password"
-                        placeholder="ยืนยันรหัสผ่าน"
-                        class="hidden"
-                >
-            </div>
-            <button type="submit">เข้าสู่ระบบ</button>
-        </form>
-        <button id="switch-auth-mode">ลงทะเบียน</button>
-    </div>
-</div>
 
 <div class="information">
     <h2 id="categoryTitle">Loading...</h2>
