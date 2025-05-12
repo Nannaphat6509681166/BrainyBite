@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
+  <title>BrainyBite</title>
+</head>
+<body>
+<nav class="navbar">
+
+  <div class="menu">
+    <div class="logo">
+      <a href="index.html">BrainyBite</a>
+    </div>
+    <a class="home-btn" href="index.html">หน้าหลัก</a>
+    <div class="dropdown-category">
+      <button class="dropbtn">หมวดหมู่
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-category-content">
+        <a href="category.html?category=Artificial Intelligence (AI)">Artificial Intelligence (AI)</a>
+        <a href="category.html?category=Cloud Computing">Cloud Computing</a>
+        <a href="category.html?category=Software Development">Software Development</a>
+        <a href="category.html?category=Big Data and Analytics">Big Data and Analytics</a>
+        <a href="category.html?category=Gaming and Entertainment Technology">Gaming and Entertainment Technology</a>
+        <a href="category.html?category=Events and Webinars">Events and Webinars</a>
+      </div>
+    </div>
+  </div>
+
+  <form id="searchForm" class="search-box">
+    <input class="search-bar" id="searchInput" type="text" placeholder="ค้นหา...">
+    <button type="submit" class="search-button">ค้นหา</button>
+  </form>
+
+  <div class="auth-box">
+    <button id="nav-signup-signin-btn">เข้าสู่ระบบ
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div id="dropdown-menu" class="dropdown hidden">
+      <a href="user.html" id="profile-link">ข้อมูลส่วนตัว</a>
+      <a href="admin.html" id="admin-lnink">เพิ่มบทความ</a>
+      <a href="#" id="logout-link">ออกจากระบบ</a>
+    </div>
+  </div>
+  <div id="overlay" class="hidden"> <!-- ซ่อน overlay เริ่มต้น -->
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">เข้าสู่ระบบ</h2>
+        <button id="close-overlay">&times;</button>
+      </div>
+      <form id="auth-form">
+        <div id="auth-fields">
+          <!-- ฟิลด์สำหรับการเข้าสู่ระบบ -->
+          <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
+          <input
+                  type="email"
+                  id="email"
+                  placeholder="อีเมล"
+                  class="hidden"
+          >
+          <input type="password" id="password" placeholder="รหัสผ่าน" required>
+          <!-- ฟิลด์เพิ่มเติมสำหรับการลงทะเบียน -->
+          <input
+                  type="password"
+                  id="confirm-password"
+                  placeholder="ยืนยันรหัสผ่าน"
+                  class="hidden"
+          >
+        </div>
+        <button type="submit">เข้าสู่ระบบ</button>
+      </form>
+      <button id="switch-auth-mode">ลงทะเบียน</button>
+    </div>
+  </div>
+  <div></div>
+
+
+</nav>
+<!--div id="searchResults">
+  <div class="image-box">
+    <img src="" alt="book-image1" class="image">
+    <div class="caption">
+      <p class="Detail">รายละเอียด: ...</p>
+      <img src="" alt="">
+    </div>
+  </div>
+</div-->
+<div class="information">
+  <div id="allArticles" class="articles-container"></div>
+</div>
+
+<script src="script/nav.js"></script>
+<script src="script/category.js"></script>
+<script src="script/search.js"></script>
+<script src="script/search-result.js"></script>
+</body>
+</html>
