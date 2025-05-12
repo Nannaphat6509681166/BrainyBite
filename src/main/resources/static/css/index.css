@@ -129,6 +129,11 @@ body {
     justify-content:space-between;
 }
 
+.hidden {
+    display: none;
+}
+
+
 .article-card p {
   font-size: 14px;
   color: #555;
