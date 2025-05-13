@@ -1,8 +1,8 @@
 // Helper function to get query parameter values
 function isUserLoggedIn() {
     const token = localStorage.getItem("isAuthenticated");
-    console.log("Auth Token:", token); // Debugging output
-    return !!token; // Ensure this returns true only if the token exists
+    const userId = localStorage.getItem("id_token");
+    return !!token && !!userId;
 }
 
 function getQueryParam(name) {

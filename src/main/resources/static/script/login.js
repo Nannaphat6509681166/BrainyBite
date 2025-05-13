@@ -1,35 +1,36 @@
-window.onload = async function () {
+document.addEventListener("DOMContentLoaded", async function () {
     try {
         const res = await fetch("/me");
         if (res.ok) {
             const data = await res.json();
-            const username = data["username"] || data.username || "ผู้ใช้";
+            const username = data["cognito:username"] || data.username || "ผู้ใช้";
 
-            // Replace "เข้าสู่ระบบ" with username
             const loginBtn = document.getElementById("nav-signup-signin-btn");
+            const dropdown = document.getElementById("dropdown-menu");
+
+            // เปลี่ยนปุ่มเป็นชื่อผู้ใช้
             loginBtn.innerHTML = `${username} <i class="fa fa-caret-down"></i>`;
             loginBtn.href = "#";
 
-            // Show dropdown menu
-            const dropdown = document.getElementById("dropdown-menu");
-            dropdown.classList.remove("hidden");
-
-            loginBtn.onclick = function (e) {
+            // แสดง dropdown เมื่อคลิกชื่อผู้ใช้
+            loginBtn.addEventListener("click", function (e) {
                 e.preventDefault();
                 dropdown.classList.toggle("hidden");
-            };
+            });
 
-            // Logout functionality
-            document.getElementById("logout-link").addEventListener("click", function () {
+            // เพิ่ม listener ให้ logout
+            document.getElementById("logout-link").addEventListener("click", function (e) {
+                e.preventDefault();
+                // ลบ token localStorage (ถ้ามี)
                 localStorage.removeItem("id_token");
 
-                const logoutUrl = "https://your-cognito-domain.auth.us-east-1.amazoncognito.com/logout" +
-                    "?client_id=YOUR_CLIENT_ID" +
-                    "&logout_uri=http://localhost:8080";
-                window.location.href = logoutUrl;
+                // ใช้ Logout URL จาก CognitoLogoutHandler
+                window.location.href = "https://us-east-1d5g1txqdm.auth.us-east-1.amazoncognito.com/logout" +
+                    "?client_id=2ud3ee8v1e6ck26am9hag5j2ra" +
+                    "&logout_uri=http://localhost:8080/logout";
             });
         }
     } catch (error) {
-        console.error("Not logged in or failed to get user info:", error);
+        console.error("Login error:", error);
     }
-};
+});

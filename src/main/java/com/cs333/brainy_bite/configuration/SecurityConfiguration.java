@@ -25,7 +25,7 @@ public class SecurityConfiguration {
 
         http.csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/search.html", "/article-detail.html").permitAll()
+                        .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/user.html", "/search.html", "/article-detail.html").permitAll()
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2 ->
                         oauth2.defaultSuccessUrl("/index.html", true)  // ✅ redirect กลับ "/" หลัง login สำเร็จ

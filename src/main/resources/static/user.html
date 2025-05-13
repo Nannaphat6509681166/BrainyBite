@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/user.css">
   <link rel="stylesheet" href="css/nav.css">
   <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
   <title>BrainyBite</title>
@@ -37,12 +37,11 @@
   </form>
 
   <div class="auth-box">
-    <a id="nav-signup-signin-btn" href="/oauth2/authorization/cognito">เข้าสู่ระบบ
+    <button id="nav-signup-signin-btn">เข้าสู่ระบบ
       <i class="fa fa-caret-down"></i>
-    </a>
+    </button>
     <div id="dropdown-menu" class="dropdown hidden">
       <a href="user.html" id="profile-link">ข้อมูลส่วนตัว</a>
-      <a href="admin.html" id="admin-lnink">เพิ่มบทความ</a>
       <a href="#" id="logout-link">ออกจากระบบ</a>
     </div>
   </div>
@@ -50,13 +49,18 @@
 </nav>
 
 <div class="information">
-  <div id="allArticles" class="articles-container"></div>
-</div>
+  <div id="userinfo" class="userInfo-container"></div>
+  <script src="script/userInfo.js"></script>
 
-<script src="script/nav.js"></script>
-<script src="script/login.js"></script>
-<script src="script/category.js"></script>
-<script src="script/search.js"></script>
-<script src="script/search-result.js"></script>
+  <h2>My Bookmarks</h2>
+  <div id="userbookmark" class="userbookmark-container">
+    <p class="no-bookmark-message">No bookmarks found. Start adding your favorite content!</p>
+  </div>
+
+  <script src="script/nav.js"></script>
+  <script src="script/login.js"></script>
+  <script src="script/bookmark-show.js"></script>
+  <script src="script/search.js"></script>
+</div>
 </body>
 </html>
