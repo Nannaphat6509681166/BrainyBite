@@ -168,6 +168,19 @@ async function deleteBookmark(articleId) {
         alert("Failed to delete bookmark. Please try again later.");
     }
 }*/
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("logged_in") === "true") {
+        // ลบ query param เพื่อป้องกัน reload loop
+        params.delete("logged_in");
+        const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        window.history.replaceState({}, document.title, newUrl);
+
+        // ✅ รีเฟรช 1 ครั้ง
+        location.reload();
+    }
+});
+
 
 
 // Initialize the application

@@ -28,9 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             // เพิ่ม listener ให้ logout
             document.getElementById("logout-link").addEventListener("click", function (e) {
                 e.preventDefault();
-                // ลบ token และ user id ออกจาก localStorage
-                localStorage.removeItem("id_token");
-                localStorage.removeItem("user_id");
+                localStorage.removeItem("sub");
 
                 // ใช้ Logout URL จาก CognitoLogoutHandler
                 window.location.href = "https://us-east-1d5g1txqdm.auth.us-east-1.amazoncognito.com/logout" +

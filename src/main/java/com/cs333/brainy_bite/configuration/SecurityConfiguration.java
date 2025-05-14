@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/user.html", "/search.html", "/article-detail.html").permitAll()
                         .anyRequest().authenticated())
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/index.html", true))
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/index.html?logged_in=true", true))
                 .logout(logout -> logout.logoutSuccessHandler(new CognitoLogoutHandler()));
 
 
