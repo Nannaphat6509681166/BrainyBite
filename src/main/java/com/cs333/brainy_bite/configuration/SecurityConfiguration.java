@@ -23,14 +23,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         CognitoLogoutHandler cognitoLogoutHandler = new CognitoLogoutHandler();
 
-        http.csrf(Customizer.withDefaults())
+        http
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/user.html", "/search.html", "/article-detail.html").permitAll()
                         .anyRequest().authenticated())
-                .oauth2Login(oauth2 ->
-                        oauth2.defaultSuccessUrl("/index.html", true)  // ✅ redirect กลับ "/" หลัง login สำเร็จ
-                )
-                .logout(logout -> logout.logoutSuccessHandler(cognitoLogoutHandler));
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/index.html", true))
+                .logout(logout -> logout.logoutSuccessHandler(new CognitoLogoutHandler()));
+
 
         return http.build();
     }

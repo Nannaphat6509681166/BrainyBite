@@ -1,73 +1,6 @@
-// Helper function to check if the user is logged in
-function isUserLoggedIn() {
-    const user_sub = localStorage.getItem("sub");
-    console.log("Auth Token:", user_sub); // Debugging output
-    return !!user_sub; // Ensure this returns true only if the token exists
-}
-
-// Load and render all articles
-async function loadArticles() {
-    try {
-        const response = await fetch('/api/allArticles');
-        const data = await response.json();
-        const articlesContainer = document.getElementById("allArticles");
-
-        const loggedIn = isUserLoggedIn(); // Check if the user is logged in
-        console.log("User Logged In:", loggedIn); // Debugging output
-
-        const userId = localStorage.getItem("sub");
-
-        data.forEach(async article => {
-            const articleCard = document.createElement("div");
-            articleCard.classList.add("article-card");
-
-            // Determine the bookmark state for the article
-            //const isBookmarked = bookmarkStates[article.article_id] || false;
-
-            var isBookmarked = await checkBookmarkStatus(userId, article.article_id);
-
-
-            // Insert the article content
-            articleCard.innerHTML = `
-                <img src="${article.thumbnail_url}" class="thumbnail" alt="${article.title}">
-                <div class="upper">
-                    <h3 class="article-title">${article.title}</h3>
-                    <img src="${isBookmarked ? "pic/bookmark-yellow.png" : "pic/bookmark.png"}"
-                        alt="Bookmark"
-                        class="bookmark-icon ${loggedIn ? '' : 'hidden'}">
-                </div>
-                <p>${article.description}</p>
-            `;
-
-            // Add click event to the thumbnail and title
-            articleCard.querySelector(".thumbnail").addEventListener("click", () => {
-                window.location.href = `article-detail.html?articleId=${article.article_id}`;
-            });
-
-            articleCard.querySelector(".article-title").addEventListener("click", () => {
-                window.location.href = `article-detail.html?articleId=${article.article_id}`;
-            });
-
-            // Add click event to the bookmark icon
-            const bookmarkIcon = articleCard.querySelector(".bookmark-icon");
-            if (bookmarkIcon) {
-                bookmarkIcon.addEventListener("click", (event) => {
-                    event.stopPropagation(); // ป้องกันไม่ให้เกิด event ที่ซ้อนกัน
-                    handleBookmarkClick(event, article.article_id, bookmarkIcon);
-                });
-            }
-
-            // Append the article card to the articles container
-            articlesContainer.appendChild(articleCard);
-        });
-    } catch (error) {
-        console.error("Error loading articles:", error);
-        alert("Error loading articles. Please try again later.");
-    }
-}
-
 // Handle bookmark click events
-/*async function handleBookmarkClick(event, articleId, bookmarkIcon) {
+
+async function handleBookmarkClick(event, articleId, bookmarkIcon) {
     event.stopPropagation(); // Prevent the card click from triggering
 
     const userId = localStorage.getItem("sub");
@@ -167,8 +100,4 @@ async function deleteBookmark(articleId) {
         console.error("Error while deleting bookmark:", error);
         alert("Failed to delete bookmark. Please try again later.");
     }
-}*/
-
-
-// Initialize the application
-loadArticles(); 
+}

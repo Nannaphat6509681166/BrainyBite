@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         const res = await fetch("/me");
         if (res.ok) {
             const data = await res.json();
+
+            // เก็บ user ID ลงใน localStorage
+            const userId = data.sub || data.id; // ลองเช็คทั้งสองแบบ เผื่อ API ใช้ชื่ออื่น
+            if (userId) {
+                localStorage.setItem("sub", userId);
+            }
+
             const username = data["cognito:username"] || data.username || "ผู้ใช้";
 
             const loginBtn = document.getElementById("nav-signup-signin-btn");
@@ -21,8 +28,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             // เพิ่ม listener ให้ logout
             document.getElementById("logout-link").addEventListener("click", function (e) {
                 e.preventDefault();
-                // ลบ token localStorage (ถ้ามี)
+                // ลบ token และ user id ออกจาก localStorage
                 localStorage.removeItem("id_token");
+                localStorage.removeItem("user_id");
 
                 // ใช้ Logout URL จาก CognitoLogoutHandler
                 window.location.href = "https://us-east-1d5g1txqdm.auth.us-east-1.amazoncognito.com/logout" +

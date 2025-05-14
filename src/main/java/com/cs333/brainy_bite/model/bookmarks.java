@@ -2,16 +2,16 @@ package com.cs333.brainy_bite.model;
 
 public class bookmarks {
     private String bookmark_id;
-    private String user_sub;
+    private String sub;
     private String article_id;
     private String created_at;
 
-    public String getUser_sub() {
-        return user_sub;
+    public String getSub() {
+        return sub;
     }
 
-    public void setUser_sub(String user_sub) {
-        this.user_sub = user_sub;
+    public void setSub(String sub) {
+        this.sub = sub;
     }
 
     public String getArticle_id() {
@@ -40,13 +40,13 @@ public class bookmarks {
 
     public bookmarks(String bookmark_id, String user_id, String article_id, String created_at) {
         this.bookmark_id = bookmark_id;
-        this.user_sub = user_id;
+        this.sub = user_id;
         this.article_id = article_id;
         this.created_at = created_at;
     }
 
     public bookmarks(String user_id, String article_id, String created_at) {
-        this.user_sub = user_id;
+        this.sub = user_id;
         this.article_id = article_id;
         this.created_at = created_at;
     }

@@ -1,8 +1,8 @@
 // Helper function to get query parameter values
 function isUserLoggedIn() {
-    const token = localStorage.getItem("isAuthenticated");
-    const userId = localStorage.getItem("id_token");
-    return !!token && !!userId;
+    const user_sub = localStorage.getItem("sub");
+    /*const userId = localStorage.getItem("id_token");*/
+    return !!user_sub
 }
 
 function getQueryParam(name) {
@@ -49,7 +49,7 @@ function displayArticles(articles) {
         const loggedIn = isUserLoggedIn(); // Check if the user is logged in
         console.log("User Logged In:", loggedIn);
 
-        const userId = localStorage.getItem("id");
+        const userId = localStorage.getItem("sub");
 
         const articleCard = document.createElement("div");
         articleCard.classList.add("article-card");
@@ -137,10 +137,10 @@ window.onload = function () {
     }
 };
 
-async function handleBookmarkClick(event, articleId, bookmarkIcon) {
+/*async function handleBookmarkClick(event, articleId, bookmarkIcon) {
     event.stopPropagation(); // Prevent the card click from triggering
 
-    const userId = localStorage.getItem("id");
+    const userId = localStorage.getItem("sub");
 
     if (!userId) {
         alert("User not authenticated. Please log in.");
@@ -169,7 +169,7 @@ async function handleBookmarkClick(event, articleId, bookmarkIcon) {
 }
 
 // Check if an article is bookmarked
-async function checkBookmarkStatus(userId, articleId) {
+/*async function checkBookmarkStatus(userId, articleId) {
     try {
         const response = await fetch(`/api/bookmark/${userId}/${articleId}`, { method: "GET" });
         if (!response.ok) {
@@ -182,10 +182,10 @@ async function checkBookmarkStatus(userId, articleId) {
         console.error("Error checking bookmark status", error);
         throw error;
     }
-}
+}*/
 
 // Add a bookmark (POST request)
-async function addBookmark(articleId) {
+/*async function addBookmark(articleId) {
     const userId = localStorage.getItem("id");
     const requestOptions = {
         method: "POST",
@@ -237,5 +237,5 @@ async function deleteBookmark(articleId) {
         console.error("Error while deleting bookmark:", error);
         alert("Failed to delete bookmark. Please try again later.");
     }
-}
+}*/
 

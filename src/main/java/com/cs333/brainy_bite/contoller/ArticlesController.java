@@ -102,10 +102,10 @@ public class ArticlesController {
         }
     }
 
-    @GetMapping("/bookmark/{user_id}")
-    public ResponseEntity<List<user_bookmarks>> getUserBookmarks(@PathVariable("user_id") String user_id) {
+    @GetMapping("/bookmark/{sub}")
+    public ResponseEntity<List<user_bookmarks>> getUserBookmarks(@PathVariable("sub") String sub) {
         try {
-            List<user_bookmarks> bookmarks = articlesRepository.showBookmarks(user_id);
+            List<user_bookmarks> bookmarks = articlesRepository.showBookmarks(sub);
 
             if (bookmarks.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -135,12 +135,12 @@ public class ArticlesController {
         }
     }
 
-    @GetMapping("/bookmark/{user_id}/{article_id}")
-    public ResponseEntity<?> findBookmarkByUserIDandArticelID(@PathVariable("user_id") String user_id,
+    @GetMapping("/bookmark/{sub}/{article_id}")
+    public ResponseEntity<?> findBookmarkByUserIDandArticelID(@PathVariable("sub") String sub,
                                                               @PathVariable("article_id") String article_id) {
 
         try {
-            bookmarks _bookmarks = articlesRepository.findBookmarkBySubAndArticleId(user_id, article_id);
+            bookmarks _bookmarks = articlesRepository.findBookmarkBySubAndArticleId(sub, article_id);
             if (_bookmarks == null) {
                 return new ResponseEntity<>("non bookmark", HttpStatus.NOT_FOUND);
             }

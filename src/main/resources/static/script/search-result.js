@@ -1,8 +1,8 @@
 // Function to check if user is logged in
 function isUserLoggedIn() {
-    const token = localStorage.getItem("isAuthenticated");
-    console.log("Auth Token:", token);
-    return !!token;
+    const user_sub = localStorage.getItem("sub");
+    console.log("Auth Token:", user_sub);
+    return !!user_sub;
 }
 
 // Get query parameter by name
@@ -41,7 +41,7 @@ async function displayArticles(articles) {
 
 
     const loggedIn = isUserLoggedIn();
-    const userId = localStorage.getItem("id");
+    const userId = localStorage.getItem("sub");
 
     for (const article of articles) {
         if (!article.id && !article.article_id) {
@@ -106,7 +106,7 @@ window.onload = function () {
 };
 
 // Handle bookmark icon click
-async function handleBookmarkClick(event, articleId, bookmarkIcon) {
+/*async function handleBookmarkClick(event, articleId, bookmarkIcon) {
     event.stopPropagation();
 
     const userId = localStorage.getItem("id");
@@ -187,4 +187,4 @@ async function deleteBookmark(articleId) {
         console.error("Delete bookmark error:", error);
         alert("Failed to delete bookmark.");
     }
-}
+}*/

@@ -55,12 +55,12 @@ public class JDBCArticleRepository implements ArticlesRepository {
 
     @Override
     public void addBookmark(bookmarks bookmark) {
-        String sql = "INSERT INTO bookmarks (user_sub, article_id, created_at) " +
+        String sql = "INSERT INTO bookmarks (sub, article_id, created_at) " +
                 "VALUES (?, ?, CURRENT_DATE())";
 
         try {
             jdbcTemplate.update(sql,
-                    bookmark.getUser_sub(),      // User ID
+                    bookmark.getSub(),      // User ID
                     bookmark.getArticle_id()    // Article ID
             );
         } catch (Exception e) {
@@ -79,10 +79,10 @@ public class JDBCArticleRepository implements ArticlesRepository {
     @Override
     public List<user_bookmarks> showBookmarks(String user_sub) {
         try{
-            List<user_bookmarks> user_bookmarks = jdbcTemplate.query("SELECT bookmarks.user_id, articles.*\n" +
+            List<user_bookmarks> user_bookmarks = jdbcTemplate.query("SELECT bookmarks.sub, articles.*\n" +
                             "FROM bookmarks\n" +
                             "JOIN articles ON bookmarks.article_id = articles.article_id\n" +
-                            "WHERE bookmarks.user_id = ?;",
+                            "WHERE bookmarks.sub = ?;",
                     BeanPropertyRowMapper.newInstance(user_bookmarks.class),user_sub);
 
             return user_bookmarks;
@@ -94,7 +94,7 @@ public class JDBCArticleRepository implements ArticlesRepository {
     @Override
     public bookmarks findBookmarkBySubAndArticleId(String user_sub, String articles_id) {
         try {
-            bookmarks _bookmarks = jdbcTemplate.queryForObject("SELECT * FROM bookmarks where user_id = ? " +
+            bookmarks _bookmarks = jdbcTemplate.queryForObject("SELECT * FROM bookmarks where sub = ? " +
                             "and article_id = ?;",
                     BeanPropertyRowMapper.newInstance(bookmarks.class), user_sub, articles_id);
             return _bookmarks;
