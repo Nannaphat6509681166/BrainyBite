@@ -142,7 +142,7 @@ public class ArticlesController {
         try {
             bookmarks _bookmarks = articlesRepository.findBookmarkBySubAndArticleId(sub, article_id);
             if (_bookmarks == null) {
-                return new ResponseEntity<>("non bookmark", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("non bookmark", HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(_bookmarks, HttpStatus.OK);
         }catch (Exception e) {

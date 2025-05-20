@@ -35,17 +35,23 @@ async function handleBookmarkClick(event, articleId, bookmarkIcon) {
 async function checkBookmarkStatus(userId, articleId) {
     try {
         const response = await fetch(`/api/bookmark/${userId}/${articleId}`, { method: "GET" });
-        if (!response.ok) {
-            return false; // ไม่เจอข้อมูลถือว่าไม่ bookmark
+
+        if (response.status === 200) {
+            return true; // มี bookmark
+        } else if (response.status === 204) {
+            return false; // ไม่มี bookmark
         } else {
-            return true;
+            console.error("Unexpected response status:", response.status);
+            return false;
         }
 
     } catch (error) {
-        console.error("Error checking bookmark status", error);
-        throw error;
+        console.error("Network or unexpected error checking bookmark status", error);
+        return false;
     }
 }
+
+
 
 // Add a bookmark (POST request)
 async function addBookmark(articleId) {
