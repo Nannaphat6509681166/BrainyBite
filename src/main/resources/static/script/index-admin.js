@@ -31,7 +31,7 @@ async function loadArticles() {
                 <img src="${article.thumbnail_url}" class="thumbnail" alt="${article.title}">
                 <div class="upper">
                     <h3 class="article-title">${article.title}</h3>
-                    
+
                 </div>
                 <p>${article.description}</p>
             `;
