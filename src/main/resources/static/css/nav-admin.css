@@ -36,14 +36,18 @@ body {
   .menu a {
     color: black;
     text-decoration: none;
-    padding: 14px 16px;
     transition: all 0.3s ease;
   }
+
+  .menu a.dd {
+    padding: 14px 16px;
+  }
+
 
   .menu a.home-btn {
     color: black;
     text-decoration: none;
-    padding: 14px 16px;
+    padding: 14px 14px;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
     padding-bottom: 14px;
@@ -63,7 +67,7 @@ body {
     border: none;
     outline: none;
     font-family: 'Kanit', sans-serif;
-    padding: 14px 16px;
+    padding: 14px 14px;
     background-color: inherit;
   }
 
@@ -95,7 +99,7 @@ body {
   .menu a.article-add-btn {
       color: black;
       text-decoration: none;
-      padding: 14px 16px;
+      padding: 14px 14px;
       transition: all 0.3s ease;
       border-bottom: 3px solid transparent;
       padding-bottom: 14px;

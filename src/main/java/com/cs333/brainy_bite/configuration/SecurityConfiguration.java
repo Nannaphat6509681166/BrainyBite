@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/user.html", "/search.html", "/article-detail.html").permitAll()
-                        .requestMatchers("/admin.html").hasRole("ADMIN")  // ป้องกันหน้าผู้ดูแล
+                        .requestMatchers("/article-add.html").hasRole("ADMIN")  // ป้องกันหน้าผู้ดูแล
                         .anyRequest().authenticated())
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo.oidcUserService(customOidcUserService))
