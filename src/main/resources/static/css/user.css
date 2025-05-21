@@ -20,27 +20,20 @@ body {
 }
 
 .userInfo-container {
-  margin-top: 9vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  margin-top: 9vh;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 30px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  width: 80%;
+  width: 70%;
+  gap: 30px; /* ✅ ช่องว่างระหว่างรูปและข้อมูล */
 }
 
-.userInfo-container img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ccc;
-  margin-right: 20px;
-}
 
 .user-card {
   flex: 1;

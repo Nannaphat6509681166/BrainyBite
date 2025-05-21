@@ -51,8 +51,6 @@ async function checkBookmarkStatus(userId, articleId) {
     }
 }
 
-
-
 // Add a bookmark (POST request)
 async function addBookmark(articleId) {
     const userId = localStorage.getItem("sub");

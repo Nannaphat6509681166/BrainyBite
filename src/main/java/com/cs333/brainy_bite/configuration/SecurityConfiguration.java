@@ -1,6 +1,7 @@
 package com.cs333.brainy_bite.configuration;
 
 import com.cs333.brainy_bite.security.CognitoLogoutHandler;
+import com.cs333.brainy_bite.security.CustomAuthenticationSuccessHandler;
 import com.cs333.brainy_bite.service.CustomOidcUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +15,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
 
     private final CustomOidcUserService customOidcUserService;
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
-    public SecurityConfiguration(CustomOidcUserService customOidcUserService) {
+    public SecurityConfiguration(CustomOidcUserService customOidcUserService,
+                                 CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
         this.customOidcUserService = customOidcUserService;
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
     }
 
     @Bean
@@ -27,14 +31,15 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/", "/index.html", "/css/**", "/script/**", "/api/**", "/category.html", "/user.html", "/search.html", "/article-detail.html").permitAll()
+                        .requestMatchers("/admin.html").hasRole("ADMIN")  // ป้องกันหน้าผู้ดูแล
                         .anyRequest().authenticated())
-                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/index.html?logged_in=true", true))
-                .logout(logout -> logout.logoutSuccessHandler(new CognitoLogoutHandler()));
-
+                .oauth2Login(oauth2 -> oauth2
+                        .userInfoEndpoint(userInfo -> userInfo.oidcUserService(customOidcUserService))
+                        .successHandler(customAuthenticationSuccessHandler)
+                )
+                .logout(logout -> logout.logoutSuccessHandler(cognitoLogoutHandler));
 
         return http.build();
     }
-
-
 
 }

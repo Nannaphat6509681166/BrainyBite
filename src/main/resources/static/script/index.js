@@ -62,7 +62,6 @@ async function loadArticles() {
         });
     } catch (error) {
         console.error("Error loading articles:", error);
-        alert("Error loading articles. Please try again later.");
     }
 }
 
