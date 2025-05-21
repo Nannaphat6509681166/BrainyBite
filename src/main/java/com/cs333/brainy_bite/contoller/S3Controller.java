@@ -1,5 +1,6 @@
 package com.cs333.brainy_bite.contoller;
 
+import com.cs333.brainy_bite.model.articles;
 import com.cs333.brainy_bite.payload.request.PendingRequest;
 import com.cs333.brainy_bite.repository.S3Repository;
 import com.cs333.brainy_bite.service.S3Service;
@@ -42,10 +43,14 @@ public class S3Controller {
             @RequestParam("data") String jsonData) throws IOException {
         String pdfUrl = s3Service.uploadFileAndReturnUrl(pdfFile.getOriginalFilename(), pdfFile);
         String imageUrl = s3Service.uploadFileAndReturnUrl(imageFile.getOriginalFilename(), imageFile);
+
+        System.out.println("PDF uploaded URL: " + pdfUrl);
+        System.out.println("Image uploaded URL: " + imageUrl);
+
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            PendingRequest data = objectMapper.readValue(jsonData, PendingRequest.class);
-            s3Repository.insertPendingArticle(data, pdfUrl, imageUrl);
+            articles data = objectMapper.readValue(jsonData, articles.class);
+            s3Repository.insertArticle(data, pdfUrl, imageUrl);
             return new ResponseEntity<>("add pending article successfully", HttpStatus.CREATED);
         } catch (JsonProcessingException e) {
             e.printStackTrace();

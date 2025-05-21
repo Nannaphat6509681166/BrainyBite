@@ -32,6 +32,7 @@ document.getElementById("confirmButton").addEventListener("click", function () {
     const fileInput = document.getElementById("articlePDFInput");
     const imageInput = document.getElementById("articleImageInput");
     const author = localStorage.getItem("username");
+    console.log(author);
 
     // Append selected files
     formdata.append("pdfFile", fileInput.files[0]);
@@ -43,7 +44,6 @@ document.getElementById("confirmButton").addEventListener("click", function () {
         "category": document.getElementById("articleCategory").value,
         "title": document.getElementById("articleTitleInput").value,
         "description": document.getElementById("articleDescriptionInput").value,
-        "status": "pending"
     }));
 
     const requestOptions = {
@@ -52,7 +52,7 @@ document.getElementById("confirmButton").addEventListener("click", function () {
         redirect: "follow"
     };
 
-    fetch("/api/v1/upload/pending", requestOptions)
+    fetch("/api/s3/upload", requestOptions)
         .then(response => {
             if (response.status === 201) {
                 // If POST is successful

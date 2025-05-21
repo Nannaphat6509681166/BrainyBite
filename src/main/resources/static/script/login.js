@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const res = await fetch("/me");
         if (res.ok) {
             const data = await res.json();
-
+            //localStorage.setItem("cognino:username", un);
             // เก็บ user ID ลงใน localStorage
             const userId = data.sub || data.id; // ลองเช็คทั้งสองแบบ เผื่อ API ใช้ชื่ออื่น
             if (userId) {
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
 
             const username = data["cognito:username"] || data.username || "ผู้ใช้";
+            localStorage.setItem("username", username);
 
             const loginBtn = document.getElementById("nav-signup-signin-btn");
             const dropdown = document.getElementById("dropdown-menu");

@@ -27,13 +27,14 @@ public class JdbcS3Service implements S3Repository{
         }
     }
 
+    @Override
     public int insertArticle(articles articles, String mk_url, String thumbnail_url) {
         try {
             return jdbcTemplate.update("INSERT INTO articles (published, author, category, title, description, " +
                     "article_url, thumbnail_url)\n" +
                     "VALUE (CURRENT_DATE(), ?, ?, ?, ?, ?, ?)",
                     new Object[] {articles.getAuthor(), articles.getCategory(), articles.getTitle(), articles.getDescription(),
-                    articles.getArticle_url(), articles.getThumbnail_url()});
+                    mk_url, thumbnail_url});
         } catch (DataAccessException e) {
             e.printStackTrace();
             throw new RuntimeException("Database insert failed", e);
