@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // ใช้ Logout URL จาก CognitoLogoutHandler
                 window.location.href = "https://us-east-1d5g1txqdm.auth.us-east-1.amazoncognito.com/logout" +
                     "?client_id=2ud3ee8v1e6ck26am9hag5j2ra" +
-                    "&logout_uri=http://localhost:8080/logout";
+                    "&logout_uri=https://brainybite.duckdns.org/logout";
             });
         }
     } catch (error) {
