@@ -144,7 +144,7 @@ body {
   .auth-box a {
     color: black;
     text-decoration: none;
-    margin-right: 1.5vw;
+    /*margin-right: 1.5vw;*/
     font-size: 16px;
     font-family: 'Kanit', sans-serif;
     border: none;
@@ -162,6 +162,7 @@ body {
     padding-left: 10px; /* ระยะห่างด้านซ้ายเพิ่มเติม */
     cursor: pointer;
     background: inherit;
+    margin-right: 1.5vw;
     transition: all 0.3s ease;
     border-bottom: 3px solid transparent;
   }
