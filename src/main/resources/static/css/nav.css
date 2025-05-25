@@ -379,6 +379,7 @@ body {
 
   .dropdown a {
     display: block;
+    width: 100%;
     padding: 10px 15px;
     text-decoration: none;
     color: black;

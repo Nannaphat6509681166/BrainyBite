@@ -13,7 +13,7 @@ public class CognitoLogoutHandler extends SimpleUrlLogoutSuccessHandler {
 
     private String domain = "https://us-east-1d5g1txqdm.auth.us-east-1.amazoncognito.com";
 
-    private String logoutRedirectUrl = "https://brainybite.duckdns.org/logout";
+    private String logoutRedirectUrl = "https://brainybite.duckdns.org/index.html";
 
     private String userPoolClientId = "2ud3ee8v1e6ck26am9hag5j2ra";
 
